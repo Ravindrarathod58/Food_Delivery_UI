@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order.in - Food Delivery UI Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="promo-banner">
+      <div class="promo-left">
+        <span class="star-icon">⭐</span>
+        <span
+          >Get 5% Off your first order,
+          <span class="promo-code">Promo: ORDER5</span></span
+        >
+      </div>
+      <div class="location-info">
+        <span>📍</span>
+        <span
+          >Banjara Hills, <span class="location-text">Road No. 12</span>,
+          Hyderabad</span
+        >
+        <button class="change-location" onclick="changeLocation()">
+          Change Location
+        </button>
+      </div>
+    </div>
+
+    <nav>
+      <div class="logo">
+        <span class="logo-text">Order</span
+        ><span class="logo-country">.in</span>
+      </div>
+
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#" class="home-btn">Home</a></li>
+        <li><a href="#menu">Browse Menu</a></li>
+        <li><a href="#offers">Special Offers</a></li>
+        <li><a href="#restaurants">Restaurants</a></li>
+        <li><a href="#track">Track Order</a></li>
+      </ul>
+
+      <div class="nav-group-end" id="navEndGroup">
+        <button class="cart-button" onclick="viewCart()">
+          <div class="cart-icon-wrapper">
+            🛒
+            <span class="cart-count">23</span>
+          </div>
+          <div class="cart-price">₹ 1,249</div>
+        </button>
+        <button class="login-btn" onclick="login()">
+          <span>👤</span> Login/Signup
+        </button>
+      </div>
+    </nav>
+
+    <div class="top-hero-section">
+      <div class="top-hero-container">
+        <div class="top-hero-left">
+          <p class="top-hero-subtitle">
+            Order Restaurant food, takeaway and groceries.
+          </p>
+          <h1 class="top-hero-title">Feast Your Senses,</h1>
+          <h1 class="top-hero-title-accent">Fast and Fresh</h1>
+          <p class="top-postcode-label">
+            Enter a pincode to see what we deliver
+          </p>
+          <div class="search-box">
+            <input
+              type="text"
+              class="postcode-input"
+              id="pincodeInput"
+              placeholder="e.g. 500034"
+              maxlength="6"
+            />
+            <button class="search-btn" onclick="searchRestaurants()">
+              Search
+            </button>
+          </div>
+        </div>
+        <div class="top-hero-right">
+          <div class="top-hero-images">
+            <div class="notification-card card-1">
+              <span class="card-number">1</span>
+              <div class="card-header">
+                <span>Order Received</span>
+                <span class="card-dot" style="color: green">●</span>
+                <span class="card-time">now</span>
+              </div>
+              <div class="card-title">Restaurant Accepted! ✅</div>
+              <div class="card-subtitle">
+                Your meal is being prepared with care.
+              </div>
+            </div>
+
+            <div class="notification-card card-2">
+              <span class="card-number">2</span>
+              <div class="card-header">
+                <span>Delivery</span>
+                <span class="card-dot">●</span>
+                <span class="card-time">5 mins ago</span>
+              </div>
+              <div class="card-title">Rider Assigned 🛵</div>
+              <div class="card-subtitle">
+                Meet Alex! Tracking link sent to your phone.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deals-section main-padding">
+      <div class="deals-header">
+        <h2 class="deals-title">
+          Up to -40% <span class="deals-emoji">🎊</span> Exclusive Deals
+        </h2>
+        <div class="category-filters-wrapper">
+          <div class="category-filters">
+            <button class="filter-btn" onclick="filterCategory(this, 'vegan')">
+              Vegan
+            </button>
+            <button class="filter-btn" onclick="filterCategory(this, 'sushi')">
+              Sushi
+            </button>
+            <button
+              class="filter-btn active"
+              onclick="filterCategory(this, 'pizza')"
+            >
+              Pizza & Fast food
+            </button>
+            <button class="filter-btn" onclick="filterCategory(this, 'others')">
+              Others
+            </button>
+          </div>
+          <button class="view-all-btn">View All Deals →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container main-padding">
+      <div class="featured-section">
+        <div class="featured-grid" id="featuredGrid"></div>
+      </div>
+
+      <hr />
+
+      <div class="categories-section">
+        <h2 class="section-title">Order.in Popular Categories 🤩</h2>
+        <div class="categories-grid" id="categoriesGrid"></div>
+      </div>
+
+      <hr />
+
+      <div class="popular-section">
+        <h2 class="section-title">Popular Restaurants</h2>
+        <div class="popular-grid" id="popularGrid"></div>
+      </div>
+    </div>
+
+    <section class="hero-section">
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800&h=600&fit=crop"
+          alt="Couple ordering food"
+        />
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="order-text">Order</span
+          ><span class="ing-text">ing</span> is more
+        </h1>
+        <div class="hero-subtitle">
+          <span class="personalised">Personalised</span> & Instant
+        </div>
+        <p class="app-download-text">
+          Download the Order.in app for faster ordering
+        </p>
+        <div class="app-badges">
+          <img
+            src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred_2x.png"
+            alt="Download on App Store"
+            class="app-badge"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            alt="Get it on Google Play"
+            class="app-badge"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-card cta-card-partner">
+        <div>
+          <span class="cta-badge">Earn more with lower fees</span>
+          <p class="cta-small-text">Signup as a business</p>
+          <h2 class="cta-title">Partner with us</h2>
+        </div>
+        <button class="cta-button">Get Started</button>
+        <img
+          src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=800&fit=crop"
+          alt="Chef"
+          class="cta-image"
+        />
+      </div>
+      <div class="cta-card cta-card-rider">
+        <div>
+          <span class="cta-badge">Avail exclusive perks</span>
+          <p class="cta-small-text">Signup as a rider</p>
+          <h2 class="cta-title">Ride with us</h2>
+        </div>
+        <button class="cta-button">Get Started</button>
+        <img
+          src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=600&h=800&fit=crop"
+          alt="Delivery rider"
+          class="cta-image"
+        />
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="faq-header">
+        <h2 class="faq-title">Know more about us!</h2>
+        <div class="faq-tabs">
+          <div class="faq-tab active">Frequent Questions</div>
+          <div class="faq-tab">Who we are?</div>
+          <div class="faq-tab">Partner Program</div>
+          <div class="faq-tab">Help & Support</div>
+        </div>
+      </div>
+      <div class="faq-content">
+        <div class="faq-questions">
+          <div class="faq-question active">How does Order.in work?</div>
+          <div class="faq-question">What payment methods are accepted?</div>
+          <div class="faq-question">Can I track my order in real-time?</div>
+          <div class="faq-question">
+            Are there any special discounts or promotions available?
+          </div>
+          <div class="faq-question">Is Order.in available in my area?</div>
+        </div>
+        <div class="faq-answer">
+          <div class="answer-card">
+            <div class="answer-icon">🍔</div>
+            <h3 class="answer-title">Place an Order!</h3>
+            <p class="answer-text">
+              Place order through our website or Mobile app
+            </p>
+          </div>
+          <div class="answer-card">
+            <div class="answer-icon">🔍</div>
+            <h3 class="answer-title">Track Progress</h3>
+            <p class="answer-text">
+              Your can track your order status with delivery time
+            </p>
+          </div>
+          <div class="answer-card">
+            <div class="answer-icon">📱</div>
+            <h3 class="answer-title">Get your Order!</h3>
+            <p class="answer-text">
+              Receive your order at a lightning fast speed!
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="faq-description">
+        Order.in simplifies the food ordering process. Browse through our
+        diverse menu, select your favorite dishes, and proceed to checkout. Your
+        delicious meal will be on its way to your doorstep in no time!
+      </p>
+    </section>
+
+    <section class="stats-section">
+      <div class="stat-item">
+        <div class="stat-number">546+</div>
+        <div class="stat-label">Registered Riders</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">789,900+</div>
+        <div class="stat-label">Orders Delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">690+</div>
+        <div class="stat-label">Restaurants Partnered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">17,457+</div>
+        <div class="stat-label">Food items</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">Order<span class="uk">.in</span></div>
+          <div class="footer-app-badges">
+            <img
+              src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred_2x.png"
+              alt="App Store"
+              class="footer-app-badge"
+            />
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+              alt="Google Play"
+              class="footer-app-badge"
+            />
+          </div>
+          <p class="footer-company-info">
+            Company # 490039-445, Registered with House of companies.
+          </p>
+        </div>
+
+        <div class="footer-newsletter">
+          <h3 class="footer-section-title">
+            Get Exclusive Deals in your Inbox
+          </h3>
+          <form class="newsletter-form">
+            <input
+              type="email"
+              placeholder="youremail@gmail.com"
+              class="newsletter-input"
+            />
+            <button type="submit" class="newsletter-button">Subscribe</button>
+          </form>
+          <p class="newsletter-note">
+            we wont spam, read our <a href="#">email policy</a>
+          </p>
+          <div class="social-icons">
+            <div class="social-icon">f</div>
+            <div class="social-icon">📷</div>
+            <div class="social-icon">🎵</div>
+            <div class="social-icon">👻</div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-section-title">Legal Pages</h3>
+          <ul class="footer-links">
+            <li><a href="#">Terms and conditions</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">Modern Slavery Statement</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-section-title">Important Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Get help</a></li>
+            <li><a href="#">Add your restaurant</a></li>
+            <li><a href="#">Sign up to deliver</a></li>
+            <li><a href="#">Create a business account</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Order.in Designed by Ravindra.</div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="#">Pricing</a>
+          <a href="#">Do not sell or share my personal information</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
