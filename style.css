@@ -579,23 +579,23 @@
         :root {
           --padding-desktop: 40px;
         }
-        .hero-section {
+        .top-hero-section {
           margin: 30px var(--padding-desktop);
           min-height: 400px;
         }
-        .hero-left {
+        .top-hero-left {
           padding: 50px 40px;
           flex: 1;
         }
-        .hero-right {
+        .top-hero-right {
           flex: 1;
           min-height: 350px;
         }
-        .hero-container {
+        .top-hero-container {
           flex-direction: column;
         }
-        .hero-title,
-        .hero-title-accent {
+        .top-hero-title,
+        .top-hero-title-accent {
           font-size: 42px;
         }
         .food-emoji {
@@ -624,11 +624,11 @@
         :root {
           --padding-desktop: 20px;
         }
-        .hero-section {
+        .top-hero-section {
           margin: 20px;
         }
-        .hero-title,
-        .hero-title-accent {
+        .top-hero-title,
+        .top-hero-title-accent {
           font-size: 32px;
         }
         .promo-banner {
